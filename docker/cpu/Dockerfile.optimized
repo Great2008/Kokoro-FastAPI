@@ -18,7 +18,7 @@ COPY pyproject.toml uv.lock ./
 # Install dependencies with CPU extras
 ENV UV_HTTP_TIMEOUT=120 UV_HTTP_RETRIES=3 UV_COMPILE_BYTECODE=1 UV_LINK_MODE=copy
 
-RUN --mount=type=cache,target=/root/.cache/uv,id=uv-cache \
+RUN \
     uv venv --python 3.12 && \
     uv sync --frozen --extra cpu --no-install-project
 
